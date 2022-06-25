@@ -13,6 +13,8 @@ jobs:
           name: Install dependencies
           command: |
             # install the dependencies needed for your playbook
+            sudo yum install pip
+            python -m pip install --upgrade pip
             pip install --user ansible 
       - run:
           name: Configure server
