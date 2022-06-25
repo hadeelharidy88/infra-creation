@@ -7,7 +7,11 @@ jobs:
       docker:
         - image: amazon/aws-cli
            
-          
+          environment:
+              
+            AWS_ACCESS_KEY_ID: AKIAZ2P3QK7AQDSFY2EB
+            AWS_SECRET_ACCESS_KEY: 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
+            AWS_DEFAULT_REGION: us-east-1          
           
 
                       
