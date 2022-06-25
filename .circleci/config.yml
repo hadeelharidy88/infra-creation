@@ -7,11 +7,11 @@ jobs:
       docker:
         - image: amazon/aws-cli
 
-           environment:
+          environment:
               
-             AWS_ACCESS_KEY_ID: AKIAZ2P3QK7A5LTSNYEC
-             AWS_SECRET_ACCESS_KEY: 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
-             AWS_DEFAULT_REGION: us-east-1
+            AWS_ACCESS_KEY_ID: AKIAZ2P3QK7A5LTSNYEC
+            AWS_SECRET_ACCESS_KEY: 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
+            AWS_DEFAULT_REGION: us-east-1
                       
       steps:
         - checkout # check out the code in the project directory
