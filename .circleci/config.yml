@@ -13,7 +13,7 @@ jobs:
           name: Install dependencies
           command: |
             # install the dependencies needed for your playbook
-             ansible --version
+             apk add --update ansible
       - run:
           name: Configure server
           command: |
