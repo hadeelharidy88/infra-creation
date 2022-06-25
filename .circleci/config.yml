@@ -2,7 +2,7 @@ version: 2.1
 
 
 jobs:
-  create_infrastructure:  
+  delete_infrastructure:  
       
       docker:
         - image: amazon/aws-cli
@@ -16,10 +16,10 @@ jobs:
       steps:
         - checkout # check out the code in the project directory
         - run:
-            name : Create Infrastructure Stack
+            name : Delete Infrastructure Stack
             command: |
               
-              aws cloudformation delete-stack --stack-name myStack-${CIRCLE_WORKFLOW_ID:0:5} --region us-east-1
+              aws cloudformation delete-stack --stack-name myStack-1fcf7 
               
 
 
@@ -27,4 +27,4 @@ workflows:
   
   my_Workflow:
     jobs:
-      - create_infrastructure
+      - delete_infrastructure
