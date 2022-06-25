@@ -2,32 +2,27 @@ version: 2.1
 
 
 jobs:
-  create_infrastructure:  
-      
-      docker:
-        - image: amazon/aws-cli
-           
-          environment:
-              
-            AWS_ACCESS_KEY_ID: AKIAZ2P3QK7AQDSFY2EB
-            AWS_SECRET_ACCESS_KEY: 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
-            AWS_DEFAULT_REGION: us-east-1          
-          
-
-                      
-      steps:
-        - checkout # check out the code in the project directory
-        - run:
-            name : Create Infrastructure Stack
-            command: |
-              
-              aws cloudformation deploy  --template-file template.yml  --stack-name myStack-${CIRCLE_WORKFLOW_ID:0:5} --region us-east-1
-
+   configure_infrastructure: 
+    docker:
+      - image: python:3.7-alpine3.11
+    steps:
+      - checkout
+      - add_ssh_keys:
+          fingerprints: ["0f:85:02:a0:03:01:fa:a3:43:ee:81:25:55:de:41:c8"] # You can get this ID in the section where you registered the SSH Key
+      - run:
+          name: Install dependencies
+          command: |
+            # install the dependencies needed for your playbook
+            python3 -m pip install --user ansible 
+      - run:
+          name: Configure server
+          command: |
+            ansible-playbook -i inventory.txt main.yml
 
   
 workflows:
   
   my_Workflow:
     jobs:
-      - create_infrastructure
+      - configure_infrastructure
       
