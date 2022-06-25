@@ -13,7 +13,7 @@ jobs:
           name: Install dependencies
           command: |
             # install the dependencies needed for your playbook
-            python3 -m pip install --user ansible 
+            pip install --user ansible 
       - run:
           name: Configure server
           command: |
